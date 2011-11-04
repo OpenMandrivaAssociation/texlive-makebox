@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/makebox
+# catalog-date 2006-12-02 14:51:32 +0100
+# catalog-license lppl
+# catalog-version 0.1
 Name:		texlive-makebox
 Version:	0.1
 Release:	1
@@ -49,6 +55,7 @@ instead of an explicit length measure.
 %doc %{_texmfdistdir}/source/latex/makebox/Makefile
 %doc %{_texmfdistdir}/source/latex/makebox/makebox.dtx
 %doc %{_texmfdistdir}/source/latex/makebox/makebox.ins
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -59,3 +66,5 @@ instead of an explicit length measure.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
