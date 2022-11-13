@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/makebox
-# catalog-date 2006-12-02 14:51:32 +0100
-# catalog-license lppl
-# catalog-version 0.1
 Name:		texlive-makebox
-Version:	0.1
-Release:	11
+Version:	15878
+Release:	1
 Summary:	Defines a \makebox* command
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/makebox
 License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/makebox.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/makebox.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/makebox.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/makebox.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/makebox.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/makebox.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -25,12 +19,12 @@ command, except that the width is given by a sample text
 instead of an explicit length measure.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -48,24 +42,11 @@ instead of an explicit length measure.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 0.1-2
-+ Revision: 753681
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 0.1-1
-+ Revision: 718943
-- texlive-makebox
-- texlive-makebox
-- texlive-makebox
-- texlive-makebox
-
